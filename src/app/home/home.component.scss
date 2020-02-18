@@ -1,0 +1,67 @@
+table {
+	width: 100%;
+  }
+  
+.mat-form-field {
+	font-size: 14px;
+	width: 100%;
+  }
+.table-header {
+	background-color: green;
+	color: white;
+	padding: 0 5px;
+}
+.table-container {
+	padding: 5px 15px 15px 15px;
+	overflow-x: auto;
+}
+.table-component-holder {
+	border: 1px solid green;
+	background-color: white;
+}
+.text-right{
+	text-align: right;
+}
+.center-align{
+	float:left;
+	width:90%;
+}
+
+th, td {
+	text-align: left;
+	padding: 8px;
+  }
+  tr:nth-child(even){background-color: #f2f2f2}
+
+  .table-responsive {
+	display: block;
+	width: 100%;
+	
+  }
+	
+	.mat-table {
+		width: 100%;
+		max-width: 100%;
+		margin-bottom: 1rem;
+		display: table;
+		border-collapse: collapse;
+		margin: 0px;
+	}
+	
+	.mat-row,
+	.mat-header-row {
+		display: table-row;
+	}
+	
+	.mat-cell,
+	.mat-header-cell {
+		word-wrap: initial;
+		display: table-cell;
+		padding: 0px 5px;
+		line-break: unset;
+		white-space: nowrap;
+		vertical-align: middle;
+	}
+	input{
+		border-bottom: 1px solid black;
+	}
