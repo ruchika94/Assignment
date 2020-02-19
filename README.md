@@ -2,7 +2,9 @@
 
 git clone https://github.com/ruchika94/Assignment.git
 
-run `npm install` for genrate node module.
+Run `npm install` for genrate node module.
+
+Run `ng serve --o` for dev server that will automatically navigate on `http://localhost:4200/`.
 
 ## Development server
 
