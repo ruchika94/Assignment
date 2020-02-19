@@ -1,6 +1,8 @@
-# SynerzipAssignment
+#Get the Code
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.6.
+git clone https://github.com/ruchika94/Assignment.git
+
+run `npm install` for genrate node module.
 
 ## Development server
 
