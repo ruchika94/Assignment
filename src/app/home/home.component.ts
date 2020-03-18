@@ -1,10 +1,11 @@
-﻿import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+﻿import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import {MatTableDataSource  ,MatPaginator, MatSort} from '@angular/material';
 import { Subscription } from 'rxjs';
 import { first} from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../_models';
 import { UserService, AuthenticationService } from '../_services';
+import { } from "googlemaps";
 
 
 
@@ -13,6 +14,7 @@ export interface PeriodicElement {
     firstname: string,
     lastname:  string,
     email:string,
+    city: string,
     action:string;
   }
 
@@ -24,9 +26,28 @@ export class HomeComponent implements OnInit, OnDestroy {
     currentUserSubscription: Subscription;
     users: User[] = [];
     Fetchdata:any = [];
-    displayedColumns: string[] = ['id','firstname', 'lastname', 'email'];
+    
+    displayedColumns: string[] = ['id','firstname', 'lastname', 'email', 'city'];
   dataSource = new MatTableDataSource();
   @ViewChild(MatSort, {static: true}) sort: MatSort;
+  @ViewChild('mapContainer', {static: false}) gmap: ElementRef;
+  map: google.maps.Map;
+  lat = 40.730610;
+  lng = -73.935242;
+  coordinates = new google.maps.LatLng(this.lat, this.lng);
+  mapOptions: google.maps.MapOptions = {
+    center: this.coordinates,
+    zoom: 8,
+  };
+  mapInitializer() {
+    this.map = new google.maps.Map(this.gmap.nativeElement, 
+    this.mapOptions);
+    this.marker.setMap(this.map);
+   }
+   marker = new google.maps.Marker({
+    position: this.coordinates,
+    map: this.map,
+  });
     constructor(
         private authenticationService: AuthenticationService,
         private userService: UserService,
@@ -42,6 +63,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
     ngAfterViewInit(): void {
         this.dataSource.sort = this.sort;
+        this.mapInitializer();
       }
 
     ngOnDestroy() {
@@ -84,6 +106,7 @@ export class HomeComponent implements OnInit, OnDestroy {
               firstname: users[i].firstName,
               lastname:  users[i].lastName,
               email: users[i].email,
+              city: users[i].city,
               action: users[i].id,
             };
             userData.push(tableData);
